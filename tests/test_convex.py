@@ -8,6 +8,9 @@ class TestVoid:
 
     # Инициализация (выполняется для каждого из тестов класса)
     def setup_method(self):
+        Figure.fixed_point_a = R2Point(0, 0)
+        Figure.fixed_point_b = R2Point(5, 0)
+        Figure.fixed_point_c = R2Point(0, 5)
         self.f = Void()
 
     # Нульугольник является фигурой
@@ -20,7 +23,7 @@ class TestVoid:
 
     # Периметр нульугольника нулевой
     def test_perimeter(self):
-        assert self.f.perimeter() == 0.0
+        assert self.f.norm_perimeter() == 0.0
 
     # Площадь нульугольника нулевая
     def test_аrea(self):
@@ -35,6 +38,9 @@ class TestPoint:
 
     # Инициализация (выполняется для каждого из тестов класса)
     def setup_method(self):
+        Figure.fixed_point_a = R2Point(0, 0)
+        Figure.fixed_point_b = R2Point(5, 0)
+        Figure.fixed_point_c = R2Point(0, 5)
         self.f = Point(R2Point(0.0, 0.0))
 
     # Одноугольник является фигурой
@@ -47,7 +53,7 @@ class TestPoint:
 
     # Периметр одноугольника нулевой
     def test_perimeter(self):
-        assert self.f.perimeter() == 0.0
+        assert self.f.norm_perimeter() == 0.0
 
     # Площадь одноугольника нулевая
     def test_аrea(self):
@@ -66,6 +72,9 @@ class TestSegment:
 
     # Инициализация (выполняется для каждого из тестов класса)
     def setup_method(self):
+        Figure.fixed_point_a = R2Point(0, 0)
+        Figure.fixed_point_b = R2Point(5, 0)
+        Figure.fixed_point_c = R2Point(0, 5)
         self.f = Segment(R2Point(0.0, 0.0), R2Point(1.0, 0.0))
 
     # Двуугольник является фигурой
@@ -78,7 +87,7 @@ class TestSegment:
 
     # Периметр двуугольника равен удвоенной длине отрезка
     def test_perimeter(self):
-        assert self.f.perimeter() == approx(2.0)
+        assert self.f.norm_perimeter() == approx(2.0)
 
     # Площадь двуугольника нулевая
     def test_аrea(self):
@@ -101,6 +110,9 @@ class TestPolygon:
 
     # Инициализация (выполняется для каждого из тестов класса)
     def setup_method(self):
+        Figure.fixed_point_a = R2Point(0, 0)
+        Figure.fixed_point_b = R2Point(5, 0)
+        Figure.fixed_point_c = R2Point(0, 5)
         self.f = Polygon(
             R2Point(
                 0.0, 0.0), R2Point(
@@ -148,11 +160,11 @@ class TestPolygon:
     # Изменение периметра многоугольника
     #   изначально он равен сумме длин сторон
     def test_perimeter1(self):
-        assert self.f.perimeter() == approx(2.0 + sqrt(2.0))
+        assert self.f.norm_perimeter() == approx(2.0 + sqrt(2.0))
     #   добавление точки может его изменить
 
     def test_perimeter2(self):
-        assert self.f.add(R2Point(1.0, 1.0)).perimeter() == approx(4.0)
+        assert self.f.add(R2Point(1.0, 1.0)).norm_perimeter() == approx(4.0)
 
     # Изменение площади многоугольника
     #   изначально она равна (неориентированной) площади треугольника
