@@ -38,6 +38,10 @@ class Segment(Figure):
 
     def __init__(self, p, q):
         self.p, self.q = p, q
+        self._norm_perimeter = p.dist(q)
+
+    def norm_perimeter(self):
+        return 2*self._norm_perimeter
 
     def sum_angle(self):
         ang = 0
