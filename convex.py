@@ -138,19 +138,18 @@ class Polygon(Figure):
             self._area += abs(R2Point.area(t,
                                            self.points.last(),
                                            self.points.first()))
-
             # удаление освещённых рёбер из начала дека
             p = self.points.pop_first()
             while t.is_light(p, self.points.first()):
                 self._sum_angle -= R2Point.per(self.fixed_point_a,
                                                self.fixed_point_b,
-                                               self.points.first(), t)
+                                               self.points.first(), p)
                 self._sum_angle -= R2Point.per(self.fixed_point_b,
                                                self.fixed_point_c,
-                                               self.points.first(), t)
+                                               self.points.first(), p)
                 self._sum_angle -= R2Point.per(self.fixed_point_a,
                                                self.fixed_point_c,
-                                               self.points.first(), t)
+                                               self.points.first(), p)
                 self._norm_perimeter -= p.dist(self.points.first())
                 self._area += abs(R2Point.area(t, p, self.points.first()))
                 p = self.points.pop_first()
@@ -162,13 +161,13 @@ class Polygon(Figure):
                 self._norm_perimeter -= p.dist(self.points.last())
                 self._sum_angle -= R2Point.per(self.fixed_point_a,
                                                self.fixed_point_b,
-                                               self.points.last(), t)
+                                               self.points.last(), p)
                 self._sum_angle -= R2Point.per(self.fixed_point_b,
                                                self.fixed_point_c,
-                                               self.points.last(), t)
+                                               self.points.last(), p)
                 self._sum_angle -= R2Point.per(self.fixed_point_a,
                                                self.fixed_point_c,
-                                               self.points.last(), t)
+                                               self.points.last(), p)
 
                 self._area += abs(R2Point.area(t, p, self.points.last()))
                 p = self.points.pop_last()
