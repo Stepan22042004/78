@@ -102,7 +102,7 @@ class TestSegment:
         assert isinstance(self.f.add(R2Point(2.0, 0.0)), Segment)
 
     # При добавлении точки двуугольник может превратиться в треугольник
-    def test_add2(self):
+    def test_add3(self):
         assert isinstance(self.f.add(R2Point(0.0, 1.0)), Polygon)
 
 

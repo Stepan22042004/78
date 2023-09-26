@@ -5,6 +5,34 @@ from convex import Figure, Void, Point, Segment, Polygon
 
 
 # Тесты для новой программы
+class TestVoid:
+
+    # Инициализация (выполняется для каждого из тестов класса)
+    def setup_method(self):
+        Figure.fixed_point_a = R2Point(0, 0)
+        Figure.fixed_point_b = R2Point(5, 0)
+        Figure.fixed_point_c = R2Point(0, 5)
+        self.f = Void()
+
+    def test_1(self):
+        assert self.f.sum_angle() == 0
+
+
+class TestPoint:
+
+    # Инициализация (выполняется для каждого из тестов класса)
+    def setup_method(self):
+        Figure.fixed_point_a = R2Point(0, 0)
+        Figure.fixed_point_b = R2Point(5, 0)
+        Figure.fixed_point_c = R2Point(0, 5)
+        self.f = Point(
+            R2Point(
+                -1.0, 1.0))
+
+    def test_1(self):
+        assert self.f.sum_angle() == 0
+
+
 class TestSegment:
 
     # Инициализация (выполняется для каждого из тестов класса)
